@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Params.lang }}">
+{{- partial "head.html" . -}} {{ if or (.Params.math) (.Site.Params.math) }}
+{{- partial "math.html" . -}} {{ end }}
+
+<body id="backtop">
+   <div class="page-layout">
+      {{- partial "header.html" . -}}
+      <div class="main">
+         <div class="about-banner banner">
+            {{- partial "about/about-banner.html" . -}}
+         </div>
+
+         <section class="about-content bg-white py-5">
+            {{- partial "about/about-content.html" . -}}
+         </section>
+      </div>
+      {{- partial "footer.html" . -}} {{ partial "scripts.html" . }}
+   </div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<style>
+   .home-banner {
+      position: relative;
+      overflow: hidden;
+   }
+
+   .home-banner::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      background: linear-gradient(to bottom, #08415c 0%, transparent 25%, transparent 75%, #08415c 100%);
+   }
+</style>
+
+<section style="background-image: url(/img/service-banner.webp); background-size: cover;padding: 250px 0px 150px;">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <h2 class="text-center text-black">
+               Services
+            </h2>
+            <p class="text-center text-black text-em">
+               Helping small businesses solve big problems.
+            </p>
+         </div>
+      </div>
+   </div>
+</section>

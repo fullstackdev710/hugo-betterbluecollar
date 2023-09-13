@@ -1,0 +1,63 @@
+<div class="container">
+   <div class="row">
+      <div class="col-12">
+         <h1 class="text-center">
+            Smart Solutions for Small Business
+         </h1>
+         <p class="text-center text-em mb-5">
+            There is so much we can take off of your hands
+         </p>
+         {{ $elements := default 3 .Site.Params.blogs.cols }}
+         {{ $blogs := sort .Site.Data.blogs "date" "desc"}}
+
+         {{ $total_rows := 1 }}
+         {{ if gt (mod (len $blogs) $elements) 0 }}
+         {{ $total_rows = add $total_rows 1 }}
+         {{ end }}
+         {{ range $i, $sequence := seq $total_rows }}
+         <div class="row gx-5 row-{{ $i }} row-{{ if eq (mod $i 2) 0 }}odd{{ else }}even{{ end }}">
+            {{ range $j, $sequence2 := (seq $elements) }}
+
+            {{ $feature_index := add (mul $i $elements) $j }}
+            {{ if lt $feature_index (len $blogs) }}
+            {{ $element := index $blogs $feature_index }}
+
+            <div class=" col-12 col-md-4">
+               <div class="blog-card">
+                  {{ with $element.url }}
+                  <div class="overflow-hidden">
+                     <a href="{{ $element.url }}" aria-label="{{ $element.name }}">
+                        {{ with $element.url }}
+                        <img src="{{ $element.banner }}" alt="Home Banner" width="100%">
+                        {{ end }}
+                     </a>
+                  </div>
+                  {{ end }}
+
+                  <div class="blog-card-content bg-white p-3">
+                     {{ with $element.url }}
+                     <a href="{{ $element.url }}" aria-label="{{ $element.name }}">
+                        {{ with $element.title }}
+                        <h3>{{ $element.title | markdownify }}</h3>
+                        {{ end }}
+                     </a>
+                     {{ end }}
+                     {{ with $element.description }}
+                     <p>{{ $element.description | markdownify }}</p>
+                     {{ with $element.url }}
+                     <a href="{{ $element.url }}" aria-label="{{ $element.name }}" class="text-uppercase text-accent">
+                        Read More<i class="fa-solid fa-circle-chevron-right text-accent mx-2"></i>
+                     </a>
+                     {{ end }}
+                     {{ end }}
+                  </div>
+               </div>
+            </div>
+
+            {{ end }}
+            {{ end }}
+         </div>
+         {{ end }}
+      </div>
+   </div>
+</div>

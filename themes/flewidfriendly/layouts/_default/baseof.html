@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Params.lang }}">
+{{- partial "head.html" . -}} {{ if or (.Params.math) (.Site.Params.math) }}
+{{- partial "math.html" . -}} {{ end }}
+
+<body id="backtop">
+  <div class="page-layout">
+    {{- partial "header.html" . -}}
+    <div class="main">
+      <div class="home-banner banner">
+        {{- partial "home/home-banner.html" . -}}
+      </div>
+
+      <section class="home-services bg-white">
+        {{- partial "home/home-services.html" . -}}
+      </section>
+
+      <section class="home-blogs bg-grey">
+        {{- partial "home/home-blogs.html" . -}}
+      </section>
+
+      <section class="home-about bg-grey">
+        {{- partial "home/home-about.html" . -}}
+      </section>
+
+      <section class="home-about bg-grey">
+        {{- partial "home/home-contact.html" . -}}
+      </section>
+
+      <section class="home-bottom bg-dark-grey">
+        {{- partial "home/home-bottom.html" . -}}
+      </section>
+    </div>
+    {{- partial "footer.html" . -}} {{ partial "scripts.html" . }}
+  </div>
+</body>
+
+</html>

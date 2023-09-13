@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Params.lang }}">
+{{- partial "head.html" . -}} {{ if or (.Params.math) (.Site.Params.math) }}
+{{- partial "math.html" . -}} {{ end }}
+
+<body id="backtop">
+   <div class="page-layout">
+      {{- partial "header.html" . -}}
+      <div class="main">
+         <div class="services-banner banner">
+            {{- partial "services/service-banner.html" . -}}
+         </div>
+
+         <section class="services-services bg-grey py-5">
+            {{- partial "services/service-services.html" . -}}
+         </section>
+
+         <section class="services-time-money bg-dark-grey py-5">
+            {{- partial "services/service-time-money.html" . -}}
+         </section>
+         <div class="services-middle-banner middle-banner">
+            {{- partial "services/service-middle-banner.html" . -}}
+         </div>
+
+         <div class="services-contact bg-white">
+            {{- partial "services/service-contact.html" . -}}
+         </div>
+
+         <section class="services-pricing bg-grey py-5">
+            {{- partial "services/service-pricing.html" . -}}
+         </section>
+      </div>
+      {{- partial "footer.html" . -}} {{ partial "scripts.html" . }}
+   </div>
+</body>
+
+</html>

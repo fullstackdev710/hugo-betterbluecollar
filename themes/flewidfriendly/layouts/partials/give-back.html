@@ -1,0 +1,27 @@
+<div class="container" id="wheretobuy">
+   <div class="row">
+      <div class="col-12">
+         <div class="heading text-center">
+         </div>
+         <div class="row align-items-center">
+            {{ range .Site.Data.giveback }}
+            <div class="col-md-4 bg-green p-2 p-md-5">
+               <div class="text-white">
+                  <h3 class="text-white">{{ .title | safeHTML }}</h3>
+                  <p class="text-white">{{ .description | safeHTML }}</p>
+                  <a class="btn-default2" aria-label="Button" href="{{.url | safeHTML }}">{{.buttontext | safeHTML
+                     }}</a>
+               </div>
+            </div>
+
+            <div class="col-md-8 text-center">
+               <img src="/img/seed-the-change-highlights.webp" alt="Home Banner" width="100%"
+                  style="max-height: 444px;">
+            </div>
+
+            {{ end }}
+         </div>
+      </div>
+   </div>
+   <!-- /.row -->
+</div>

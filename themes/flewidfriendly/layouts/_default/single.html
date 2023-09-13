@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Params.lang }}">
+{{- partial "head.html" . -}}
+{{ if or (.Params.math) (.Site.Params.math) }}
+{{- partial "math.html" . -}}
+{{ end }}
+
+<head>
+  {{ partial "header.html" . }}
+  <style>
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="all">
+
+    <div id="content">
+      <div class="container">
+
+        <div class="row">
+          <h1 class="my-5 text-center">{{.Title}}</h1>
+          <div class="d-flex justify-content-between my-3">
+
+            {{ if isset .Params "authors" }}
+
+            <span>BY
+              {{ range .Param "authors" }}
+              <a href="#"> {{ . }}</a>
+              {{ end }}
+            </span>
+            {{ end }}
+
+            {{ if isset .Params "date" }}
+
+            {{ $createdAt := .Date.Format "Mon, Jan 2, 2006" }}
+            {{ range $index, $month := slice "January" "February" "March" "April" "May"
+            "June" "July" "August" "September" "October" "November" "December" }}
+            {{ $createdAt = replace $createdAt $month (i18n $month) }}
+            {{ end }}
+
+            <span class="date-comments">
+              <a href="{{ .Permalink }}"><i class="far fa-calendar"></i> {{ $createdAt
+                }}</a>
+            </span>
+            {{ end }}
+          </div>
+          <div class="image">
+            <img src="{{ .Params.banner | relURL }}" class="img-responsive" alt="">
+          </div>
+
+          <!-- *** LEFT COLUMN *** -->
+
+          <div class="col-12" id="blog-post">
+
+            <div id="post-content">
+              {{ .Content }}
+            </div>
+            <!-- /#post-content -->
+            {{ if .Site.DisqusShortname }}
+            <div id="comments">
+              {{ template "_internal/disqus.html" . }}
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /#content -->
+
+    {{ partial "footer.html" . }}
+
+  </div>
+  <!-- /#all -->
+
+  {{ partial "scripts.html" . }}
+
+</body>
+
+</html>

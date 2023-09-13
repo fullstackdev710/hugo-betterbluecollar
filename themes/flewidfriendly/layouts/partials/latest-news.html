@@ -1,0 +1,50 @@
+<div class="container" id="core-values">
+   <h2 class="text-center mb-5">LATEST NEWS</h2>
+   {{ $elements := default 2 .Site.Params.news.cols }}
+   {{ $news := sort .Site.Data.news "date" "desc"}}
+
+   {{ $total_rows := 0 }}
+
+   {{ if gt (mod (len $news) $elements) 0 }}
+   {{ $total_rows = add $total_rows 1 }}
+   {{ end }}
+
+   {{ range $i, $sequence := seq $total_rows }}
+   <div class="row row-{{ $i }} row-{{ if eq (mod $i 2) 0 }}odd{{ else }}even{{ end }}">
+      {{ range $j, $sequence2 := (seq $elements) }}
+
+      {{ $feature_index := add (mul $i $elements) $j }}
+      {{ if lt $feature_index (len $news) }}
+      {{ $element := index $news $feature_index }}
+
+      <div class="col-md-6">
+         {{ with $element.url }}
+         <a href="{{ $element.url }}" aria-label="{{ $element.name }}">
+            {{ with $element.url }}
+            <img src="{{ $element.banner }}" alt="Home Banner" width="100%">
+            {{ end }}
+         </a>
+         {{ end }}
+
+         {{ with $element.url }}
+         <a href="{{ $element.url }}" aria-label="{{ $element.name }}">
+            {{ with $element.title }}
+            <h3 class="text-blue">{{ $element.title | markdownify }}</h3>
+            {{ end }}
+         </a>
+         {{ end }}
+         {{ with $element.description }}
+         <p>{{ $element.description | markdownify }}</p>
+         {{ with $element.url }}
+         <a href="{{ $element.url }}" aria-label="{{ $element.name }}">
+            CONTINUE READING
+         </a>
+         {{ end }}
+         {{ end }}
+      </div>
+
+      {{ end }}
+      {{ end }}
+   </div>
+   {{ end }}
+</div>

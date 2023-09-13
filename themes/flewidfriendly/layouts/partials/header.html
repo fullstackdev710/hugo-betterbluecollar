@@ -1,0 +1,69 @@
+<!-- Left logo -->
+<div class="menuHead">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 text-center text-md-start">
+        <small class="text-white"><i class="fa-solid fa-location-dot text-accent me-1"></i>Polson, MT</small>
+        <small class="text-white"><i class="fa-solid fa-mobile-screen-button text-accent me-1"></i>(+1)
+          406-290-1437</small>
+      </div>
+      <div class="col-12 col-md-6 text-center text-md-end">
+        <a href="https://www.facebook.com/boldthemes/" title="" target="_blank" class="me-2">
+          <i class="fa-brands fa-facebook-f text-white"></i>
+        </a>
+        <a href="https://twitter.com/bold_themes" title="" target="_blank" class="me-2">
+          <i class="fa-brands fa-twitter text-white"></i>
+        </a>
+        <a href="https://www.instagram.com/bold_themes/?hl=en" title="" target="_blank" class="me-2">
+          <i class="fa-brands fa-instagram text-white"></i>
+        </a>
+        <a href="#" title="" target="_self" class="me-2">
+          <i class="fa-brands fa-linkedin-in text-white"></i>
+        </a>
+      </div>
+    </div>
+    <hr class="text-white">
+    <nav class="navbar navbar-expand-lg p-0">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="/" title="{{ .Site.Title }}">
+          {{ with .Site.Params.logo }}
+          <img src="{{ . | absURL }}" class="header-logo" alt="logo">
+          {{ end }}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {{ with .Site.Menus.main }}
+            {{ $navbar_len := len . }}
+            {{ range $i, $nav_item := . }}
+            <li class="nav-item dropdown">
+              {{ if .HasChildren }}
+              <span class="nav-item nav-link" title="{{ $nav_item.Name }}">
+                {{ $nav_item.Pre }}{{ $nav_item.Name }}{{ $nav_item.Post }}
+              </span>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {{ range .Children }}
+                <!--  <a class="dropdown-item " href="{{ .URL }}" >{{ .Name }}</a> -->
+                <a class="dropdown-item " href="{{ .URL | relLangURL }}" {{ if strings.HasPrefix .URL "http" }}
+                  target="_blank" {{ end }}>{{ .Name }}</a>
+                {{ end }}
+              </div>
+              {{else}}
+              <a class="nav-item nav-link mx-3 text-decoration-none" href="{{ $nav_item.URL }}"
+                title="{{ $nav_item.Name }}">
+                {{ $nav_item.Pre }}{{ $nav_item.Name }}{{ $nav_item.Post }}
+              </a>
+              {{ end }}
+            </li>
+            {{ end }}
+            {{ end }}
+          </ul>
+          <a href="/contact" class="btn btn-default">Get Free Quote</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
