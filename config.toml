@@ -1,5 +1,5 @@
 baseURL = "http://localhost:1313/"
-title = "LOGO"
+title = "Home"
 theme = "flewidfriendly"
 disableKinds = ["taxonomy", "term"]
 enableEmoji = true
@@ -48,8 +48,8 @@ paginate = 10
 mainSections = ['blogs']
 lang = "en"
 author = ""
-description = "#1 Marine & Biodegradable Drinking Straws"
-seoTitle = "#1 Marine & Biodegradable Drinking Straws"
+description = "Better Blue Collar"
+seoTitle = "Better Blue Collar"
 favicon = "/img/favico.png"  # path to a .ico to use as favicon
 logo = "/img/logo-original.png"  # url or path to a logo to put in the header
 logo_black = "/img/logo-original.png"  # url or path to a logo to put in the header

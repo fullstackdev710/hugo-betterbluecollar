@@ -1,5 +1,5 @@
 ---
-title: "Give us a shout."
+title: "Contact"
 layout: contact
 ---
 

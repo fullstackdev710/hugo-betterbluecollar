@@ -1,4 +1,5 @@
 ---
-title: "Our Story"
+title: "Services"
+description: "Better Blue Collar"
 layout: services
 ---
