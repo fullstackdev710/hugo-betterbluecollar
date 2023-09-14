@@ -6,7 +6,6 @@
 {{ end }}
 
 <head>
-  {{ partial "header.html" . }}
   <style>
     h2 {
       text-align: center;
@@ -16,11 +15,14 @@
 
 <body>
 
-  <div id="all">
+  <div class="page-layout bg-white">
+    {{ partial "header.html" . }}
 
+    <div class="image banner">
+      <img src="{{ .Params.banner | relURL }}" class="img-responsive w-100" alt="">
+    </div>
     <div id="content">
       <div class="container">
-
         <div class="row">
           <h1 class="my-5 text-center">{{.Title}}</h1>
           <div class="d-flex justify-content-between my-3">
@@ -29,7 +31,7 @@
 
             <span>BY
               {{ range .Param "authors" }}
-              <a href="#"> {{ . }}</a>
+              <a href="#" class="text-accent"> {{ . }}</a>
               {{ end }}
             </span>
             {{ end }}
@@ -43,18 +45,15 @@
             {{ end }}
 
             <span class="date-comments">
-              <a href="{{ .Permalink }}"><i class="far fa-calendar"></i> {{ $createdAt
+              <a href="{{ .Permalink }}" class="text-accent"><i class="far fa-calendar"></i> {{ $createdAt
                 }}</a>
             </span>
             {{ end }}
           </div>
-          <div class="image">
-            <img src="{{ .Params.banner | relURL }}" class="img-responsive" alt="">
-          </div>
 
           <!-- *** LEFT COLUMN *** -->
 
-          <div class="col-12" id="blog-post">
+          <div class="col-12 pb-5" id="blog-post">
 
             <div id="post-content">
               {{ .Content }}

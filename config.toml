@@ -124,7 +124,7 @@ weight     = 2
 identifier = "menu.about"
 name       = "About"
 url        = "/about"
-weight     = 3
+weight     = 4
 
 
 [[menu.footer1]]
